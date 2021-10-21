@@ -1,0 +1,43 @@
+<% include partials/header.ejs %>
+    <div class="table-wrapper">
+        <% if (players.length > 0) { %>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Position</th>
+                        <th scope="col">Company</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% players.forEach((player, index) => { %>
+                        <tr>
+                            <th scope="row"><%= player.id %></th>
+                            <td><img src="/assets/img/<%= player.image %>" class="rounded-circle player-img" alt=""></td>
+                            <td><%= player.name %></td>
+                            <td><%= player.position %></td>
+                            <td><%= player.company %></td>
+                            <td><%= player.address %></td>
+                            <td><%= player.phone %></td>
+                            <td><%= player.email %></td>
+                            <td>
+                                <a href="client/edit/<%= player.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="client/delete/<%= player.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No clients found. Go <a href="/client/add" >here</a> to add clients.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>
